@@ -8,8 +8,8 @@
     <ProjectGuid>{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>properties</AppDesignerFolder>
-    <RootNamespace>datadog</RootNamespace>
-    <AssemblyName>datadog</AssemblyName>
+    <RootNamespace>Nohros.Metrics.Datadog</RootNamespace>
+    <AssemblyName>nohros.metrics.datadog</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,13 +32,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nohros">
-      <HintPath>..\packages\must.common.1.10.0.0\lib\net40\nohros.dll</HintPath>
+      <HintPath>..\packages\must.common.1.17.0.2\lib\net40\nohros.dll</HintPath>
     </Reference>
     <Reference Include="nohros.metrics">
       <HintPath>..\packages\must.metrics.0.8.0.7\lib\net40\nohros.metrics.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.1.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,9 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config\ApiKeyConfig.cs" />
+    <Compile Include="config\ApiKeysConfig.cs" />
+    <Compile Include="config\ApiKeyConfigColletion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
