@@ -12,5 +12,15 @@ namespace Nohros.Metrics.Datadog.Config
       var config = (ApiKeyConfig) element;
       return config.ApiKey;
     }
+
+    /// <summary>
+    /// Specifies the maximum concurrency level for event sources.
+    /// </summary>
+    [ConfigurationProperty("Uri", IsRequired = false,
+      DefaultValue = "https://app.datadoghq.com/api/v1")]
+    public string Uri {
+      get { return (string) this["Uri"]; }
+      set { this["Uri"] = value; }
+    }
   }
 }

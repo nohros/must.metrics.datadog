@@ -5,15 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("nohros.metrics.datadog")]
-[assembly: AssemblyDescription("nohros.metrics.datadog")]
+[assembly: AssemblyTitle("must.metrics.datadog.tests")]
+[assembly: AssemblyDescription("must.metrics.datadog.tests")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Norhos Inc")]
-[assembly: AssemblyProduct("Nohros metrics for datadog")]
-[assembly: AssemblyCopyright("Copyright ©  2015 by Nohros Inc")]
+[assembly: AssemblyCompany("Nohros Inc")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("Copyright ©  2015  by Nohros Inc")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("must.metrics.datadog.tests")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("64722e61-55ab-4a23-b648-daaa4656caae")]
+[assembly: Guid("1398d642-6032-4f46-bf87-336b3015225e")]
 
 // Version information for an assembly consists of the following four values:
 //

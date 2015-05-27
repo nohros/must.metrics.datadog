@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}</ProjectGuid>
+    <ProjectGuid>{28616229-ADDC-424C-A184-A00E85B6D829}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>properties</AppDesignerFolder>
-    <RootNamespace>Nohros.Metrics.Datadog</RootNamespace>
-    <AssemblyName>nohros.metrics.datadog</AssemblyName>
+    <RootNamespace>Must.Metrics.Datadog.Tests</RootNamespace>
+    <AssemblyName>must.metrics.datadog.tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,14 +35,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\must.common.1.16.4.1\lib\net40\nohros.dll</HintPath>
     </Reference>
-    <Reference Include="nohros.metrics">
+    <Reference Include="nohros.metrics, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\must.metrics.0.8.0.7\lib\net40\nohros.metrics.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,17 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="config\ApiKeyConfig.cs" />
-    <Compile Include="config\ApiKeysConfig.cs" />
-    <Compile Include="config\ApiKeyConfigColletion.cs" />
-    <Compile Include="DatadogObserver.cs" />
-    <Compile Include="DatadogObserverFactory.cs" />
-    <Compile Include="ApiEndpoint.cs" />
-    <Compile Include="IApiEndpoint.cs" />
+    <Compile Include="DatadogObserverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\datadog\must.metrics.datadog.csproj">
+      <Project>{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}</Project>
+      <Name>must.metrics.datadog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

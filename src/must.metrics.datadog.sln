@@ -3,10 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(nuget)", "(nuget)", "{A47D450F-BB33-4D3B-A419-FAC44016CB53}"
 	ProjectSection(SolutionItems) = preProject
-		nuget\must-metrics.nuspec = nuget\must-metrics.nuspec
+		nuget\must-metrics-datadog.nuspec = nuget\must-metrics-datadog.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "must.metrics.datadog", "datadog\must.metrics.datadog.csproj", "{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "must.metrics.datadog.tests", "tests\must.metrics.datadog.tests.csproj", "{28616229-ADDC-424C-A184-A00E85B6D829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,10 @@ Global
 		{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1FE3E2-CA2D-4BCB-BF0E-2F9E21A26B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28616229-ADDC-424C-A184-A00E85B6D829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28616229-ADDC-424C-A184-A00E85B6D829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28616229-ADDC-424C-A184-A00E85B6D829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28616229-ADDC-424C-A184-A00E85B6D829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
