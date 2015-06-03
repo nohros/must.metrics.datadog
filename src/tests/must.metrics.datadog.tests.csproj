@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nohros, Version=1.16.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\must.common.1.16.4.1\lib\net40\nohros.dll</HintPath>
+    <Reference Include="nohros, Version=1.17.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\must.common.1.17.5.1\lib\net40\nohros.dll</HintPath>
     </Reference>
     <Reference Include="nohros.metrics, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\must.metrics.0.8.0.7\lib\net40\nohros.metrics.dll</HintPath>

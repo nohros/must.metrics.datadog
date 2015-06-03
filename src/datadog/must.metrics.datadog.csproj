@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nohros, Version=1.16.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\must.common.1.16.4.1\lib\net40\nohros.dll</HintPath>
+    <Reference Include="nohros, Version=1.17.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\must.common.1.17.5.1\lib\net40\nohros.dll</HintPath>
     </Reference>
     <Reference Include="nohros.metrics">
       <HintPath>..\packages\must.metrics.0.8.0.7\lib\net40\nohros.metrics.dll</HintPath>
@@ -50,13 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="config\ApiKeyConfig.cs" />
-    <Compile Include="config\ApiKeysConfig.cs" />
-    <Compile Include="config\ApiKeyConfigColletion.cs" />
+    <Compile Include="config\ApiEndpointConfig.cs" />
+    <Compile Include="config\ApiEndpointConfigCollection.cs" />
+    <Compile Include="config\ApiEndpointsConfig.cs" />
+    <Compile Include="DatadogLogger.cs" />
     <Compile Include="DatadogObserver.cs" />
     <Compile Include="DatadogObserverFactory.cs" />
     <Compile Include="ApiEndpoint.cs" />
     <Compile Include="IApiEndpoint.cs" />
+    <Compile Include="IDatadogMeasureObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

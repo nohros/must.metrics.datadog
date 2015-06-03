@@ -15,9 +15,13 @@ namespace Nohros.Metrics.Datadog
 
     readonly CookieContainer cookies_;
     readonly Uri request_uri_;
+    readonly DatadogLogger logger_;
 
-    public ApiEndpoint(string base_uri, string api_key)
-      : this(new Uri(base_uri), api_key) {
+    public ApiEndpoint(string endpoint_uri, string api_key)
+      : this(new Uri(endpoint_uri), api_key) {
+      logger_ = DatadogLogger.ForCurrentProcess;
+
+      ServicePointManager.Expect100Continue = false;
     }
 
     public ApiEndpoint(Uri base_uri, string api_key) {
@@ -41,7 +45,7 @@ namespace Nohros.Metrics.Datadog
 
     HttpWebResponse Post(string json) {
       var request = (HttpWebRequest) WebRequest.Create(request_uri_);
-      request.KeepAlive = false;
+      request.KeepAlive = true;
       request.CookieContainer = cookies_;
       request.Accept = "application/json";
       request.ContentType = "application/json";

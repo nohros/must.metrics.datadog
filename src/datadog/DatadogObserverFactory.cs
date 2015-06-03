@@ -1,27 +1,87 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Nohros.Metrics.Datadog.Config;
 using Nohros.Metrics.Reporting;
-using System.Linq;
 
 namespace Nohros.Metrics.Datadog
 {
+  /// <summary>
+  /// Defines a factory for the <see cref="IMeasureObserver"/> implementation
+  /// for the datadog's.
+  /// </summary>
   public class DatadogObserverFactory
   {
-    public IEnumerable<IMeasureObserver> Create(string base_uri, string host,
-      ApiKeysConfig section) {
-      return section
-        .ApiKeys
-        .Cast<ApiKeyConfig>()
-        .Select(config => Create(base_uri, host, config));
+    /// <summary>
+    /// Creates a instance of the datadog's implementation of the
+    /// <see cref="IDatadogMeasureObserver"/> for each endpoint defined by the
+    /// <paramref name="endpoints"/>.
+    /// </summary>
+    /// <param name="endpoints">
+    /// A <see cref="ApiEndpointsConfig"/> object containing the configuration
+    /// information for the datadog's endpoints.
+    /// </param>
+    /// <returns></returns>
+    public IEnumerable<IDatadogMeasureObserver> Create(
+      ApiEndpointsConfig endpoints) {
+      return endpoints
+        .ApiEndpoints
+        .Cast<ApiEndpointConfig>()
+        .Select(Create);
     }
 
-    public IMeasureObserver Create(string base_uri, string host,
-      ApiKeyConfig config) {
-      return Create(base_uri, host, config.ApiKey);
+    /// <summary>
+    /// Creates a instance of the datadog's implementation of the
+    /// <see cref="IDatadogMeasureObserver"/> for the given
+    /// <paramref name="endpoint"/>.
+    /// </summary>
+    /// <param name="endpoint">
+    /// A <see cref="ApiEndpointConfig"/> object containing the configuration
+    /// information for the datadog's endpoint.
+    /// </param>
+    /// <returns></returns>
+    public IDatadogMeasureObserver Create(ApiEndpointConfig endpoint) {
+      return Create(endpoint.Uri, endpoint.ApiKey, Environment.MachineName);
     }
 
-    public IMeasureObserver Create(string base_uri, string host, string api_key) {
-      var endpoint = new ApiEndpoint(base_uri, api_key);
+    /// <summary>
+    /// Creates a instance of the datadog's implementation of the
+    /// <see cref="IDatadogMeasureObserver"/> by using the given
+    /// <paramref name="endpoint_uri"/> and <paramref name="api_key"/> and
+    /// the current machine's name as the host.
+    /// </summary>
+    /// <param name="endpoint_uri">
+    /// A <see cref="ApiEndpointConfig"/> object containing the configuration
+    /// information for the datadog's endpoint.
+    /// </param>
+    /// <param name="api_key">
+    /// The api key to be used when sending data do datadog's endpoint
+    /// </param>
+    /// <returns></returns>
+    public IDatadogMeasureObserver Create(string endpoint_uri, string api_key) {
+      return Create(endpoint_uri, api_key, Environment.MachineName);
+    }
+
+    /// <summary>
+    /// Creates a instance of the datadog's implementation of the
+    /// <see cref="IDatadogMeasureObserver"/> by using the given
+    /// <paramref name="endpoint_uri"/>, <paramref name="api_key"/> and
+    /// <paramref name="host"/>.
+    /// </summary>
+    /// <param name="host">
+    /// The name of the host.
+    /// </param>
+    /// <param name="endpoint_uri">
+    /// A <see cref="ApiEndpointConfig"/> object containing the configuration
+    /// information for the datadog's endpoint.
+    /// </param>
+    /// <param name="api_key">
+    /// The api key to be used when sending data do datadog's endpoint
+    /// </param>
+    /// <returns></returns>
+    public IDatadogMeasureObserver Create(string endpoint_uri, string api_key,
+      string host) {
+      var endpoint = new ApiEndpoint(endpoint_uri, api_key);
       return new DatadogObserver(endpoint, host);
     }
   }
