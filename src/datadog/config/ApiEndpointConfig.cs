@@ -56,5 +56,19 @@ namespace Nohros.Metrics.Datadog.Config
       get { return (string) this["Uri"]; }
       set { this["Uri"] = value; }
     }
+
+    /// <summary>
+    /// Specifies the proxy to be used to send the metrics to the datadog's
+    /// endpoint.
+    /// </summary>
+    /// <remarks>
+    /// The proxy should be specified in the format:
+    /// "http[s]://[username]:[password]@proxy.com"
+    /// </remarks>
+    [ConfigurationProperty("Proxy", IsRequired = false, DefaultValue = "")]
+    public string Proxy {
+      get { return (string)this["Proxy"]; }
+      set { this["Proxy"] = value; }
+    }
   }
 }

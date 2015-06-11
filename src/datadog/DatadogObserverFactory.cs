@@ -41,7 +41,7 @@ namespace Nohros.Metrics.Datadog
     /// </param>
     /// <returns></returns>
     public IDatadogMeasureObserver Create(ApiEndpointConfig endpoint) {
-      return Create(endpoint.Uri, endpoint.ApiKey, Environment.MachineName);
+      return Create(endpoint.Uri, endpoint.ApiKey, endpoint.Host, endpoint.Proxy);
     }
 
     /// <summary>
@@ -78,10 +78,15 @@ namespace Nohros.Metrics.Datadog
     /// <param name="api_key">
     /// The api key to be used when sending data do datadog's endpoint
     /// </param>
+    /// <param name="proxy">
+    /// Specifies the proxy to be used to send the metrics to the datadog's
+    /// endpoint. This value should be specified in the format:
+    /// "http[s]://[username]:[password]@proxy.com"
+    /// </param>
     /// <returns></returns>
     public IDatadogMeasureObserver Create(string endpoint_uri, string api_key,
-      string host) {
-      var endpoint = new ApiEndpoint(endpoint_uri, api_key);
+      string host, string proxy = "") {
+      var endpoint = new ApiEndpoint(endpoint_uri, api_key, proxy);
       return new DatadogObserver(endpoint, host);
     }
   }
