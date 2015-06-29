@@ -41,6 +41,24 @@ namespace Nohros.Metrics.Datadog
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DatadogObserver"/> by
+    /// using the given <paramref name="endpoint"/> and <paramref name="host"/>.
+    /// </summary>
+    /// <param name="endpoint">
+    /// The <see cref="ApiEndpoint"/> to be used to send the measures.
+    /// </param>
+    /// <param name="host">
+    /// The name of the host that should be associated with the measures.
+    /// </param>
+    /// <param name="app">
+    /// A string that can be used to distinguish one application instance
+    /// from another.
+    /// </param>
+    public DatadogObserver(IApiEndpoint endpoint, string host, string app)
+      : this(endpoint, host, TimeSpan.FromSeconds(30), app) {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DatadogObserver"/> by
     /// using the given <paramref name="endpoint"/>, <paramref name="host"/>
     /// and <paramref name="ttl"/>.
     /// </summary>

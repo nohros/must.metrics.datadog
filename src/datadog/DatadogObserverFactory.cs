@@ -83,11 +83,15 @@ namespace Nohros.Metrics.Datadog
     /// endpoint. This value should be specified in the format:
     /// "http[s]://[username]:[password]@proxy.com"
     /// </param>
+    /// <param name="app">
+    /// A string that can be used to distinguish one application instance
+    /// from another.
+    /// </param>
     /// <returns></returns>
     public IDatadogMeasureObserver Create(string endpoint_uri, string api_key,
-      string host, string proxy = "") {
+      string host, string proxy = "", string app = "") {
       var endpoint = new ApiEndpoint(endpoint_uri, api_key, proxy);
-      return new DatadogObserver(endpoint, host);
+      return new DatadogObserver(endpoint, host, app);
     }
   }
 }
