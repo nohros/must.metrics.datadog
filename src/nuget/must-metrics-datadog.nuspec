@@ -2,17 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>must.metrics.datadog</id>
-        <version>0.3.3.0</version>
-        <title>Must Framework - Metrics for Datadog</title>
+        <version>0.4.0.0</version>
+        <title>Must - Metrics for Datadog</title>
         <authors>Nohros Inc</authors>
         <owners>Nohros Inc</owners>
         <projectUrl>http://code.google.com/p/nohros-must</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>
-          Capturing CLR and application-level metrics. So you know what's going on.
-          An port of Coda Hale's Metrics library targeting the .NET. This is not
-          an idiomatic port but is very similar to coda library. The main difference
-          resides in the way this libray handles concurrency.
+		  A metrics observer that push metrics to datadog plataform.
         </description>
         <summary>The metrics package of the nohros must framework.</summary>
         <copyright>Nohros Inc</copyright>

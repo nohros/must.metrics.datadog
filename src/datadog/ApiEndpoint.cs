@@ -137,7 +137,6 @@ namespace Nohros.Metrics.Datadog
 
     HttpWebResponse Post(string json) {
       var request = CreateRequest();
-      request.KeepAlive = true;
       request.CookieContainer = cookies_;
       request.Accept = "application/json";
       request.ContentType = "application/json";
