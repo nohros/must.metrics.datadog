@@ -6,6 +6,9 @@ using Nohros.Extensions;
 
 namespace Nohros.Metrics.Datadog
 {
+  /// <summary>
+  /// A implementation of the <see cref="IApiEndpoint"/> class.
+  /// </summary>
   internal class ApiEndpoint : IApiEndpoint
   {
     const string kClassName = "Nohros.Metrics.Datadog.ApiEndpoint";
@@ -17,18 +20,63 @@ namespace Nohros.Metrics.Datadog
     readonly DatadogLogger logger_;
     readonly IWebProxy proxy_;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiEndpoint"/> by
+    /// using the given endpoint uri and api key.
+    /// </summary>
+    /// <param name="endpoint_uri">
+    /// The address to the datadog endpoint.
+    /// </param>
+    /// <param name="api_key">
+    /// The api key for the datadog application.
+    /// </param>
     public ApiEndpoint(string endpoint_uri, string api_key)
       : this(new Uri(endpoint_uri), api_key, string.Empty) {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiEndpoint"/> by
+    /// using the given endpoint uri and api key.
+    /// </summary>
+    /// <param name="endpoint_uri">
+    /// The address to the datadog endpoint.
+    /// </param>
+    /// <param name="api_key">
+    /// The api key for the datadog application.
+    /// </param>
+    /// <param name="proxy">
+    /// A string containing the proxy to be used to post the series to
+    /// datadog servers. The proxy should be specified in the format:
+    /// "http[s]://[username]:[password]@proxy.com"
+    /// </param>
     public ApiEndpoint(string endpoint_uri, string api_key, string proxy)
       : this(new Uri(endpoint_uri), api_key, proxy) {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiEndpoint"/> by
+    /// using the given endpoint uri and api key.
+    /// </summary>
+    /// <param name="base_uri">
+    /// The address to the datadog endpoint.
+    /// </param>
+    /// <param name="api_key">
+    /// The api key for the datadog application.
+    /// </param>
     public ApiEndpoint(Uri base_uri, string api_key)
       : this(base_uri, api_key, string.Empty) {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiEndpoint"/> by
+    /// using the given endpoint uri and api key.
+    /// </summary>
+    /// <param name="base_uri">
+    /// The address to the datadog endpoint.
+    /// </param>
+    /// <param name="api_key">
+    /// The api key for the datadog application.
+    /// </param>
     public ApiEndpoint(Uri base_uri, string api_key, string proxy) {
       if (base_uri == null || api_key == null) {
         throw new ArgumentNullException(base_uri == null
@@ -72,8 +120,11 @@ namespace Nohros.Metrics.Datadog
       return web_proxy;
     }
 
+    /// <inheritdoc/>
     public bool PostSeries(string series) {
-      return HasSucceed(Post(series));
+      using (HttpWebResponse response = Post(series)) {
+        return HasSucceed(response);
+      }
     }
 
     bool HasSucceed(HttpWebResponse response) {

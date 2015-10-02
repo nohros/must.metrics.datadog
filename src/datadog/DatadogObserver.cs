@@ -126,7 +126,7 @@ namespace Nohros.Metrics.Datadog
       app_ = app.Trim();
 
       // The app should be separated from the metric's name with a dot.
-      if (app_ != "" && app_.EndsWith(".")) {
+      if (app_ != "" && !app_.EndsWith(".")) {
         app_ += ".";
       }
 

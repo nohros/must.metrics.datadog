@@ -41,7 +41,8 @@ namespace Nohros.Metrics.Datadog
     /// </param>
     /// <returns></returns>
     public IDatadogMeasureObserver Create(ApiEndpointConfig endpoint) {
-      return Create(endpoint.Uri, endpoint.ApiKey, endpoint.Host, endpoint.Proxy);
+      return Create(endpoint.Uri, endpoint.ApiKey, endpoint.Host, endpoint.Proxy,
+        endpoint.AppName);
     }
 
     /// <summary>
