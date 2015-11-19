@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Endpoint_GivingUpRetry" xml:space="preserve">
+    <value>Giving up retries for series '{0}'</value>
+  </data>
   <data name="Endpoint_SeriesPostFail" xml:space="preserve">
     <value>Series failed to be posted with code: {0}</value>
+  </data>
+  <data name="Endpoint_WebException_PostFailRetry" xml:space="preserve">
+    <value>Series failed to be posted due to a communication failure. A new attempt will be made</value>
   </data>
 </root>
