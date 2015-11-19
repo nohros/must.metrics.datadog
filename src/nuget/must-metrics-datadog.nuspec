@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>must.metrics.datadog</id>
-        <version>0.5.0.0</version>
+        <version>0.5.1</version>
         <title>Must - Metrics for Datadog</title>
         <authors>Nohros Inc</authors>
         <owners>Nohros Inc</owners>
@@ -17,7 +17,7 @@
         <tags>csharp framework nohros security metrics must datadog</tags>
     <dependencies>
       <dependency id="must.common" version="1.16.0" />
-      <dependency id="must.metrics" version="0.8.0" />
+      <dependency id="must.metrics" version="0.13.4" />
     </dependencies>
     </metadata>
     <files>

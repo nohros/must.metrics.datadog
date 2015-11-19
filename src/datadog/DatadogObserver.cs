@@ -19,6 +19,8 @@ namespace Nohros.Metrics.Datadog
       public DateTime Timestamp { get; set; }
     }
 
+    const int kMaxPointsPerPost = 150;
+
     readonly IApiEndpoint endpoint_;
     readonly string host_;
     readonly string app_;
@@ -151,8 +153,14 @@ namespace Nohros.Metrics.Datadog
     void Post() {
       Serie serie;
       var series = new List<Serie>(measures_.Count);
-      while (measures_.TryDequeue(out serie)) {
+
+      int count = 0;
+
+      // Keep removing series from the queue until the operation fail or the
+      // limit is reached.
+      while (measures_.TryDequeue(out serie) && count < kMaxPointsPerPost) {
         series.Add(serie);
+        count++;
       }
 
       if (series.Count > 0) {
@@ -164,6 +172,7 @@ namespace Nohros.Metrics.Datadog
             .ForEach(series, WriteSerie)
             .WriteEndArray()
             .WriteEndObject();
+
         endpoint_.PostSeries(json.ToString());
       }
     }

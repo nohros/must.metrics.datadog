@@ -61,11 +61,29 @@ namespace Nohros.Metrics.Datadog {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Giving up retries for series &apos;{0}&apos;.
+        /// </summary>
+        internal static string Endpoint_GivingUpRetry {
+            get {
+                return ResourceManager.GetString("Endpoint_GivingUpRetry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Series failed to be posted with code: {0}.
         /// </summary>
         internal static string Endpoint_SeriesPostFail {
             get {
                 return ResourceManager.GetString("Endpoint_SeriesPostFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Series failed to be posted due to a communication failure. A new attempt will be made.
+        /// </summary>
+        internal static string Endpoint_WebException_PostFailRetry {
+            get {
+                return ResourceManager.GetString("Endpoint_WebException_PostFailRetry", resourceCulture);
             }
         }
     }
