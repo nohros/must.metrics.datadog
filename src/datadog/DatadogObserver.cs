@@ -153,11 +153,12 @@ namespace Nohros.Metrics.Datadog
     void Post() {
       var series = new List<Serie>(measures_.Count);
 
-      int count = 0;
+      int count;
       do {
         // Keep removing series from the queue until the operation fail or the
         // limit is reached.
         Serie serie;
+        count = 0;
         while (measures_.TryDequeue(out serie) && count < kMaxPointsPerPost) {
           series.Add(serie);
           count++;
@@ -175,7 +176,6 @@ namespace Nohros.Metrics.Datadog
 
           endpoint_.PostSeries(json.ToString());
         }
-        count = 0;
       } while (count >= kMaxPointsPerPost);
     }
 
