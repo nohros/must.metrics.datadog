@@ -151,30 +151,32 @@ namespace Nohros.Metrics.Datadog
     }
 
     void Post() {
-      Serie serie;
       var series = new List<Serie>(measures_.Count);
 
       int count = 0;
+      do {
+        // Keep removing series from the queue until the operation fail or the
+        // limit is reached.
+        Serie serie;
+        while (measures_.TryDequeue(out serie) && count < kMaxPointsPerPost) {
+          series.Add(serie);
+          count++;
+        }
 
-      // Keep removing series from the queue until the operation fail or the
-      // limit is reached.
-      while (measures_.TryDequeue(out serie) && count < kMaxPointsPerPost) {
-        series.Add(serie);
-        count++;
-      }
+        if (series.Count > 0) {
+          JsonStringBuilder json =
+            new JsonStringBuilder()
+              .WriteBeginObject()
+              .WriteMemberName("series")
+              .WriteBeginArray()
+              .ForEach(series, WriteSerie)
+              .WriteEndArray()
+              .WriteEndObject();
 
-      if (series.Count > 0) {
-        JsonStringBuilder json =
-          new JsonStringBuilder()
-            .WriteBeginObject()
-            .WriteMemberName("series")
-            .WriteBeginArray()
-            .ForEach(series, WriteSerie)
-            .WriteEndArray()
-            .WriteEndObject();
-
-        endpoint_.PostSeries(json.ToString());
-      }
+          endpoint_.PostSeries(json.ToString());
+        }
+        count = 0;
+      } while (count >= kMaxPointsPerPost);
     }
 
     void WriteSerie(Serie serie, JsonStringBuilder json) {
