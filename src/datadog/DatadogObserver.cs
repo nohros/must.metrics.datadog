@@ -112,7 +112,9 @@ namespace Nohros.Metrics.Datadog
     /// before sending it to datadog's endpoint.
     /// </para>
     /// </remarks>
-    public DatadogObserver(IApiEndpoint endpoint, string host, TimeSpan ttl,
+    public DatadogObserver(IApiEndpoint endpoint,
+      string host,
+      TimeSpan ttl,
       string app) {
       if (host == null) {
         throw new ArgumentNullException("host");
@@ -197,6 +199,10 @@ namespace Nohros.Metrics.Datadog
         .ForEach(serie.Tags, (tag, builder) => builder.WriteString(tag))
         .WriteEndArray()
         .WriteEndObject();
+    }
+
+    public void Observe(Measure measure) {
+      Observe(measure, measure.Timestamp);
     }
 
     public void Observe(Measure measure, DateTime timestamp) {
