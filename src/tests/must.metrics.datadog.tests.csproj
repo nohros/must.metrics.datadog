@@ -34,9 +34,9 @@
     <Reference Include="nohros, Version=1.17.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\must.common.1.17.6.0\lib\net40\nohros.dll</HintPath>
     </Reference>
-    <Reference Include="nohros.metrics, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="nohros.metrics, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\must.metrics.0.13.0.0\lib\net40\nohros.metrics.dll</HintPath>
+      <HintPath>..\packages\must.metrics.0.16.0.0\lib\net40\nohros.metrics.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
